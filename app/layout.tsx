@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Sports Media Gallery - Nvision & Vincente',
-  description: 'Professional sports photography and videography services',
+  title: 'NVC Sports Media - Professional Sports Photography & Videography',
+  description: 'Professional sports photography and videography services by NVC Sports Media',
 }
 
 export default function RootLayout({

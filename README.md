@@ -1,6 +1,6 @@
-# Sports Media Gallery - Nvision & Vincente
+# NVC Sports Media
 
-A professional sports media gallery and booking system for **Nvision Video** and **Vincente Photos**. Built with Next.js 14, Supabase, and Stripe.
+A professional sports media gallery and booking system for **NVC Sports Media**. Built with Next.js 14, Supabase, and Stripe.
 
 ## 🚀 Quick Deploy
 

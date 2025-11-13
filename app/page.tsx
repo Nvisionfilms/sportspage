@@ -12,8 +12,8 @@ export default function HomePage() {
           <div className="flex items-center gap-2">
             <Camera className="h-8 w-8 text-slate-900" />
             <div>
-              <h1 className="text-xl font-bold">Sports Media</h1>
-              <p className="text-xs text-slate-600">Nvision & Vincente</p>
+              <h1 className="text-xl font-bold">NVC Sports Media</h1>
+              <p className="text-xs text-slate-600">Professional Sports Coverage</p>
             </div>
           </div>
           <nav className="flex items-center gap-4">
@@ -152,7 +152,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="border-t bg-slate-50 py-8">
         <div className="container mx-auto px-4 text-center text-sm text-slate-600">
-          <p>&copy; 2024 Sports Media Gallery. All rights reserved.</p>
+          <p>&copy; 2024 NVC Sports Media. All rights reserved.</p>
           <div className="flex gap-4 justify-center mt-4">
             <Link href="/privacy" className="hover:text-slate-900">Privacy</Link>
             <Link href="/terms" className="hover:text-slate-900">Terms</Link>
