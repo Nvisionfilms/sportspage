@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Plus, Camera, Video, Eye, Heart, Download } from 'lucide-react'
+import { Plus, Camera, Video, Eye, Heart, Download, Users, Mail, Package } from 'lucide-react'
 
 export default async function DashboardPage() {
   const supabase = createServerClient()
@@ -63,6 +63,60 @@ export default async function DashboardPage() {
       </header>
 
       <div className="container mx-auto px-4 py-8">
+        {/* Quick Actions - NVision Operations */}
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4">NVision Operations</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            <Link href="/dashboard/crm">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-blue-100 rounded-lg">
+                      <Users className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">CRM & Leads</h3>
+                      <p className="text-sm text-slate-600">Manage contacts</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link href="/dashboard/emails">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-green-100 rounded-lg">
+                      <Mail className="h-6 w-6 text-green-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Email Templates</h3>
+                      <p className="text-sm text-slate-600">Send emails</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link href="/dashboard/packages">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-purple-100 rounded-lg">
+                      <Package className="h-6 w-6 text-purple-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Service Packages</h3>
+                      <p className="text-sm text-slate-600">Manage pricing</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+        </div>
+
         {/* Stats */}
         <div className="grid md:grid-cols-4 gap-4 mb-8">
           <Card>
