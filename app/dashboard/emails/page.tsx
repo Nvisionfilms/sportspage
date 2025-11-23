@@ -63,28 +63,43 @@ export default function EmailTemplatesPage() {
     const finalSubject = replaceVariables(customSubject)
     const finalBody = replaceVariables(customBody)
 
-    const supabase = createClient()
-    
-    // Log the sent email
-    await supabase.from('sent_emails').insert([{
-      template_id: selectedTemplate.id,
-      recipient_email: recipientEmail,
-      recipient_name: recipientName,
-      subject: finalSubject,
-      body: finalBody,
-      status: 'sent'
-    }])
+    try {
+      // Send email via API
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: recipientEmail,
+          subject: finalSubject,
+          body: finalBody,
+          templateId: selectedTemplate.id,
+          recipientName: recipientName
+        })
+      })
 
-    // In production, integrate with email service (SendGrid, Resend, etc.)
-    // For now, we'll just copy to clipboard
-    const emailContent = `To: ${recipientEmail}\nSubject: ${finalSubject}\n\n${finalBody}`
-    navigator.clipboard.writeText(emailContent)
+      const result = await response.json()
 
-    alert('Email logged! Content copied to clipboard. Paste into your email client.')
+      if (response.ok) {
+        alert('✅ Email sent successfully!')
+        setRecipientEmail('')
+        setRecipientName('')
+        setCustomSubject(selectedTemplate.subject)
+        setCustomBody(selectedTemplate.body)
+      } else {
+        // Fallback: copy to clipboard if email service not configured
+        const emailContent = `To: ${recipientEmail}\nSubject: ${finalSubject}\n\n${finalBody}`
+        navigator.clipboard.writeText(emailContent)
+        alert('⚠️ Email service not configured. Content copied to clipboard.')
+      }
+    } catch (error) {
+      console.error('Send error:', error)
+      // Fallback: copy to clipboard
+      const emailContent = `To: ${recipientEmail}\nSubject: ${finalSubject}\n\n${finalBody}`
+      navigator.clipboard.writeText(emailContent)
+      alert('⚠️ Could not send email. Content copied to clipboard.')
+    }
     
     setSending(false)
-    setRecipientEmail('')
-    setRecipientName('')
   }
 
   const copyToClipboard = () => {
